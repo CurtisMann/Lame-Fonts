@@ -1,0 +1,184 @@
+// Color variables
+$orange: #ffac08;
+$grey: #7a7a7a;
+$blue: #34afc4;
+$black: #000000;
+$white: #ffffff;
+$whiteAlpha: rgba(255,255,255,0.95);
+
+// Font mixin
+@mixin font-source-sans($size: false, $colour: false, $weight: false,  $lh: false) {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    @if $size { font-size: $size; }
+    @if $colour { color: $colour; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+html{
+  font-size: 16pt;
+  overflow-x: hidden;
+}
+
+body{
+  margin: 0;
+  background-color: $white;
+}
+
+// Lame Fonts fixed header
+header{
+  width: 100%;
+  background-color: $whiteAlpha;
+  border-bottom: solid 1px $black;
+  position: fixed;
+  top: 0;
+  h1{
+    @include font-source-sans(2rem, $orange, 900, 0.9em);
+    margin: 0;
+    padding: 0 2.5% 0 2.5%;
+  }
+}
+
+// Making the web uglier
+#slogan{
+  padding: 0 2.5% 0 2.5%;
+  margin-bottom: 3rem;
+  @include font-source-sans(1.5rem, $black, 300);
+  margin: 10px 0 0 0;
+}
+
+#mainContainer{
+  padding: 0 2.5% 0 2.5%;
+  margin-top: 3rem;
+}
+
+// Stop mainContainer from collapsing due to floated child elements
+#mainContainer::after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+// Introduction/explanatory statement
+#introduction{
+  @include font-source-sans(1rem, $grey, 600);
+  margin: 3em 0 3em 0;
+}
+
+// All links blue and not underlined
+a{
+  color: $blue;
+  text-decoration: none;
+}
+
+// Currently unpopular/currently untrendy lists
+.font-list{
+  .list-title{
+    @include font-source-sans(1.25rem, $grey, 600);
+    margin-bottom: 0;
+  }
+
+  ul{
+    list-style: none;
+    padding-left: 0.5em;
+    margin: 0;
+    width: 100%;
+
+    //Font shortcut links
+    li{
+      @include font-source-sans(1.25rem, $blue, 600);
+    }
+  }
+}
+
+// Container for each font sample
+.font-container{
+  margin-bottom: 2rem;
+  overflow-wrap: break-word;
+
+  .font-title{
+    @include font-source-sans(1.25rem, $orange, 600);
+    margin: 1.3em 0 0 0;
+    border-bottom: solid $orange 2px;
+    display: inline-block;
+  }
+
+  .font-classification{
+    @include font-source-sans(0.75rem, $black, 600);
+    margin: 0.2em 0 0 0;
+  }
+
+  .font-link{
+    @include font-source-sans(0.75rem, $blue, 600, 0.9em);
+  }
+
+  // Lame font sample
+  .text-sample{
+    margin: 1rem 0 0 0;
+    padding-right: 2%;
+    font-size: 1.5rem;
+    color: $black;
+  }
+
+  .author-attribution{
+    @include font-source-sans(0.75rem, $black, 300);
+    text-align: right;
+    margin: 1em 0 0 0;
+    border-bottom: solid 1px black;
+  }
+
+  //Fix line-height issues with superscript
+  sup{
+    font-size: 0.80em;
+    vertical-align: super;
+    line-height: 0;
+  }
+}
+
+// Switch to two-column layout
+@media only screen and (min-width: 720px){
+  #introduction{
+    @include font-source-sans(1.25rem, $grey, 600);
+  }
+
+  .font-list{
+    width: 50%;
+    float: left;
+    margin-bottom: 2rem;
+  }
+
+  .font-container-column{
+    width: 50%;
+    float: left;
+    padding-right: 1rem;
+    box-sizing: border-box;
+
+    .font-container{
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+// Fix introduction statement width
+@media only screen and (min-width: 860px){
+  #introduction{
+    width: 817px;
+  }
+}
+
+// Fix font-container widths
+@media only screen and (min-width: 1045px){
+  .font-container{
+    width: 484px;
+  }
+}
+
+// Fix mainContainer width
+@media only screen and (min-width: 1330px){
+  #mainContainer{
+    width: 1330px;
+    margin: auto;
+    box-sizing: border-box;
+  }
+}
