@@ -1,6 +1,8 @@
 var unpopular = [];
 var untrendy = [];
 
+// testing something lol
+
 var apiCallPopular = new XMLHttpRequest();
 var apiCallTrending = new XMLHttpRequest();
 var urlPopular = "https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyBW7XfxQiYjO1GX7-Ob2NoYKe56HD8MTdw";
